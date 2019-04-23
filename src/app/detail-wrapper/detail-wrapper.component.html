@@ -1,0 +1,23 @@
+<div *ngIf="config" class="content-wrapper">
+  <h3>
+    {{ config.metric.name }} for {{ config.country.name }} <br />
+    <small
+      >({{ config.startDate.month() + 1 }}/{{ config.startDate.year() }} -
+      {{ config.endDate.month() + 1 }}/{{ config.endDate.year() }})</small
+    >
+  </h3>
+
+  <!-- Graph/Table to go here -->
+  <div class="chart-wrapper">
+    <app-table-display
+      *ngIf="showTable"
+      [dataPoints]="dataPoints"
+      [config]="config"
+    ></app-table-display>
+    <app-bar-graph
+      *ngIf="showBarChart"
+      [dataPoints]="dataPoints"
+      [config]="config"
+    ></app-bar-graph>
+  </div>
+</div>

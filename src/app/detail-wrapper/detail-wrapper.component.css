@@ -1,0 +1,15 @@
+.content-wrapper {
+  top: 56px;
+  position: absolute;
+  padding: 10px;
+  left: 0;
+  right: 0;
+}
+
+.content-wrapper h3 {
+  margin-left: 15px;
+}
+
+.chart-wrapper {
+  width: 100%;
+}

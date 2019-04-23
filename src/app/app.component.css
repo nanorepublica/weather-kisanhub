@@ -1,0 +1,29 @@
+
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+/* Taken from stackoverflow question */
+.mat-toolbar {
+    position: fixed;
+    position: -webkit-fixed; /* For macOS/iOS Safari */
+    top: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.welcome {
+  position: absolute;
+  top: 56px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  padding: 20px;
+}
+
+.welcome mat-icon {
+  width: 4em;
+  font-size: 4em;
+}

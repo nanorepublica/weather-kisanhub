@@ -1,0 +1,63 @@
+<div>
+  <mat-toolbar>
+    <h3>Chart Options</h3>
+    <span class="fill-remaining-space"></span>
+
+    <button mat-icon-button (click)="closeBottomSheet($event)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div class="control-wrapper">
+    <h4>Data Options</h4>
+    <app-metric></app-metric>
+    <app-country></app-country>
+    <mat-divider></mat-divider>
+    <h4>Date Options</h4>
+    <div>
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="startPicker"
+          placeholder="Choose a start date"
+          [formControl]="startDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker
+          touchUi
+          #startPicker
+          startView="multi-year"
+          (yearSelected)="chosenYearHandler($event, 'start')"
+          (monthSelected)="chosenMonthHandler($event, 'start', startPicker)"
+        ></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [matDatepicker]="endPicker"
+          placeholder="Choose an end date"
+          [formControl]="endDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker
+          touchUi
+          #endPicker
+          startView="multi-year"
+          (yearSelected)="chosenYearHandler($event, 'end')"
+          (monthSelected)="chosenMonthHandler($event, 'end', endPicker)"
+        ></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <h4>Display Options</h4>
+    <app-display-choice></app-display-choice>
+    <button color="primary" mat-raised-button (click)="saveConfig($event)">
+      Save
+    </button>
+  </div>
+</div>
