@@ -1,27 +1,29 @@
-# WeatherCharts
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+# Weather Data Technical Tests
 
-## Development server
+**[Live Demo](https://kisanhub.akmiller.co.uk)**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To run locally:
 
-## Code scaffolding
+```
+npm install
+npm install -g @angular/cli
+ng serve --open
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## To do
 
-## Build
+* Fix error in bar chart when we load a lot of data collapsing into one line
+* Fix issue with data not loading on first load (but does on second?)
+* Fix data for country, display and metric reseting to defaults
+* add tests
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## nice to have features
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* add more graphs!
+* progress bar for data loading
+* multi-select on metric and country to enable grouped charts for comparison
+* make the tables nicer (pagination)
+* do more complex graphs (Tmin & Tmax on the same chart)
+* sampling across large date ranges (only show an average for the year, when range is greater than X years)
+* gestures (eg pinch to zoom on the graph)

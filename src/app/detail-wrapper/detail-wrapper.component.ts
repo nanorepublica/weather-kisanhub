@@ -16,8 +16,8 @@ export class DetailWrapperComponent implements OnInit {
   @Input() dataPoints: dataPoint[];
   @Input() config: Config;
 
-  showTable: Boolean = true;
-  showBarChart: Boolean = false;
+  showTable: Boolean;
+  showBarChart: Boolean;
 
   constructor() { }
 

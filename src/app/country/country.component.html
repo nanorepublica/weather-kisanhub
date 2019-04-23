@@ -1,6 +1,6 @@
 <div>
   <mat-form-field>
-    <mat-select placeholder="Location" [(ngModel)]="selectedCountry" (ngModelChange)="onSelect($event)">
+    <mat-select placeholder="Location" [(ngModel)]="selectedCountry" [(value)]="selectedCountry" (ngModelChange)="onSelect($event)">
       <mat-option *ngFor="let country of availableCountries" [value]="country">{{country.name}}</mat-option>
     </mat-select>
   </mat-form-field>

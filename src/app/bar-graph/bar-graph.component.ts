@@ -22,7 +22,7 @@ export class BarGraphComponent implements OnInit {
   showXAxisLabel = false;
   xAxisLabel = 'Time';
   showYAxisLabel = false;
-  roundDomains = true;
+  yAxisLabel = 'Value';
 
   colorScheme = {
     domain: ['#5AA454'],

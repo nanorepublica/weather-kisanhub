@@ -1,9 +1,10 @@
 import {
   Component,
   Output,
-  EventEmitter,
   ViewChild,
   AfterViewInit,
+  Inject,
+  Optional,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
@@ -12,6 +13,7 @@ import {
   MatDatepickerInputEvent,
   MatDatepicker,
   MAT_DATE_FORMATS,
+  MAT_BOTTOM_SHEET_DATA,
 } from '@angular/material';
 // import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
@@ -49,22 +51,27 @@ import { Config } from '../class';
 })
 export class BottomSheetComponent implements AfterViewInit {
   config: Config;
-  startDate = new FormControl(moment('01/1920', MY_FORMATS.parse.dateInput));
+  startDate = new FormControl(moment('01/1999', MY_FORMATS.parse.dateInput));
   endDate = new FormControl(moment())
 
   constructor(
+    @Optional() @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
     private bottomSheetRef: MatBottomSheetRef<BottomSheetComponent>
   ) {
+    this.config = this.data
   }
-
-  @Output() configEvent = new EventEmitter<Config>();
 
   @ViewChild(CountryComponent) countryChild;
   @ViewChild(MetricComponent) metricChild;
   @ViewChild(DisplayChoiceComponent) displayChild;
 
   ngAfterViewInit() {
-    if (this.config === undefined) {
+    if (this.data !== null) {
+      this.startDate.setValue(this.data.startDate)
+      this.endDate.setValue(this.data.endDate)
+      this.countryChild.onSelect(this.data.country)
+    }
+    if (this.config === null) {
       this.config = {
         country: this.countryChild.selectedCountry,
         metric: this.metricChild.selectedmetric,
@@ -76,7 +83,7 @@ export class BottomSheetComponent implements AfterViewInit {
   }
 
   closeBottomSheet(event: MouseEvent): void {
-    this.bottomSheetRef.dismiss();
+    this.bottomSheetRef.dismiss(this.config);
     event.preventDefault();
   }
 
@@ -88,7 +95,6 @@ export class BottomSheetComponent implements AfterViewInit {
       endDate: this.endDate.value,
       display: this.displayChild.selectedDisplay,
     };
-    this.configEvent.emit(this.config);
     this.closeBottomSheet(event);
   }
 

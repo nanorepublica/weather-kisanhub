@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
 import { MatBottomSheet } from '@angular/material';
 
-import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component'
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 
-import { S3DataService } from './s3-data.service'
-import { dataPoint, Config } from './class'
+import { S3DataService } from './s3-data.service';
+import { dataPoint, Config } from './class';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-
   weatherData: dataPoint[];
-  config: Config
+  config: Config;
 
   constructor(
     private bottomSheet: MatBottomSheet,
@@ -22,13 +21,18 @@ export class AppComponent {
   ) { }
 
   getData(config: Config) {
-    this.s3DataService.getData(config.metric.name, config.country.name)
-      .subscribe(data => this.weatherData = data);
+    if (config !== undefined) {
+      this.s3DataService
+        .getData(config.metric.name, config.country.name)
+        .subscribe(data => (this.weatherData = data));
+    }
   }
 
   openBottomSheet(): void {
-    const bottomSheetRef = this.bottomSheet.open(BottomSheetComponent);
-    const sub = bottomSheetRef.instance.configEvent.subscribe((data) => {
+    const bottomSheetRef = this.bottomSheet.open(BottomSheetComponent, {
+      data: this.config,
+    });
+    bottomSheetRef.afterDismissed().subscribe(data => {
       this.config = data;
       this.getData(data);
     });
