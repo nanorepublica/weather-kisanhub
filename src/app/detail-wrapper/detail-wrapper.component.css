@@ -11,5 +11,5 @@
 }
 
 .chart-wrapper {
-  width: 100%;
+  overflow-x: scroll;
 }

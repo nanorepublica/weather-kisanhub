@@ -19,23 +19,17 @@ export class BarGraphComponent implements OnInit {
   // options
   showXAxis = true;
   showYAxis = true;
-  gradient = false;
-  showLegend = true;
-  legendPosition = 'below'
   showXAxisLabel = false;
   xAxisLabel = 'Time';
   showYAxisLabel = false;
-  yAxisLabel = 'Value';
+  roundDomains = true;
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'],
+    domain: ['#5AA454'],
   };
   ngOnInit() { }
 
   ngOnChanges(changes) {
-    if (changes.config && !changes.config.firstChange) {
-      this.yAxisLabel = changes.config.currentValue.metric.name;
-    }
     if (changes.dataPoints && !changes.dataPoints.firstChange) {
       this.dataPoints = changes.dataPoints.currentValue.map(item => ({
         name: `${item.month}/${item.year}`,
