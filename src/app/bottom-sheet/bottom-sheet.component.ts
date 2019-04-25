@@ -69,7 +69,6 @@ export class BottomSheetComponent implements AfterViewInit {
     if (this.data !== null) {
       this.startDate.setValue(this.data.startDate)
       this.endDate.setValue(this.data.endDate)
-      this.countryChild.onSelect(this.data.country)
     }
     if (this.config === null) {
       this.config = {
