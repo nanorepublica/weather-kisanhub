@@ -14,9 +14,8 @@ ng serve --open
 ## To do
 
 * Fix error in bar chart when we load a lot of data collapsing into one line
-* Fix issue with data not loading on first load (but does on second?)
 * Fix data for country, display and metric reseting to defaults
-* add tests
+* add tests that actually test the code
 
 ## nice to have features
 
