@@ -11,12 +11,12 @@
   <div class="chart-wrapper">
     <app-table-display
       *ngIf="showTable"
-      [dataPoints]="dataPoints"
+      [dataPoints]="weatherData"
       [config]="config"
     ></app-table-display>
     <app-bar-graph
       *ngIf="showBarChart"
-      [dataPoints]="dataPoints"
+      [dataPoints]="weatherData"
       [config]="config"
     ></app-bar-graph>
   </div>

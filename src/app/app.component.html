@@ -6,7 +6,7 @@
    <button mat-icon-button (click)="openBottomSheet()"><mat-icon>filter_list</mat-icon></button>
 </mat-toolbar>
 
-<app-detail-wrapper *ngIf="config" [dataPoints]="weatherData" [config]="config"></app-detail-wrapper>
+<app-detail-wrapper *ngIf="config" [config]="config"></app-detail-wrapper>
 
 <div *ngIf="!config" class="welcome">
   <h2>Welcome to Weather Metrics</h2>

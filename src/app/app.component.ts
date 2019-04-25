@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MatBottomSheet } from '@angular/material';
+import { Observable } from 'rxjs';
 
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 
-import { S3DataService } from './s3-data.service';
 import { dataPoint, Config } from './class';
 
 @Component({
@@ -12,21 +12,11 @@ import { dataPoint, Config } from './class';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  weatherData: dataPoint[];
   config: Config;
 
   constructor(
-    private bottomSheet: MatBottomSheet,
-    private s3DataService: S3DataService
+    private bottomSheet: MatBottomSheet
   ) { }
-
-  getData(config: Config) {
-    if (config !== undefined) {
-      this.s3DataService
-        .getData(config.metric.name, config.country.name)
-        .subscribe(data => (this.weatherData = data));
-    }
-  }
 
   openBottomSheet(): void {
     const bottomSheetRef = this.bottomSheet.open(BottomSheetComponent, {
@@ -34,7 +24,6 @@ export class AppComponent {
     });
     bottomSheetRef.afterDismissed().subscribe(data => {
       this.config = data;
-      this.getData(data);
     });
   }
 }
